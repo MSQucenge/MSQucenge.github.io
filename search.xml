@@ -80,6 +80,45 @@
       </tags>
   </entry>
   <entry>
+    <title>kali搭建docker靶场</title>
+    <url>/2021/01/21/kali%E6%90%AD%E5%BB%BAdocker%E9%9D%B6%E5%9C%BA/</url>
+    <content><![CDATA[<h1 id="kali搭建docker靶场"><a href="#kali搭建docker靶场" class="headerlink" title="kali搭建docker靶场"></a>kali搭建docker靶场</h1><p>docker 技术又称容器技术，可以一键打包环境是我们的工作更加便捷化，我转写这篇博客的的目的是让我以后的朋友更加便捷的安装docker靶场，首先再次声明，我这篇博客是基于网上大部分朋友以及前辈的，所以勿喷</p>
+<h2 id="下载docker"><a href="#下载docker" class="headerlink" title="下载docker"></a>下载docker</h2><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo apt update  <span class="comment"># 更新kali软件源</span></span><br><span class="line">sudo apt <span class="keyword">install</span> docker.io -y  <span class="comment"># 安装 docker</span></span><br><span class="line">docker -v <span class="comment">#观察docker版本 （随着时间的推移docker版本也会升级，不要在意这一个版本）</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210120201242635.png#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="优化docker-下载速度"><a href="#优化docker-下载速度" class="headerlink" title="优化docker 下载速度"></a>优化docker 下载速度</h1><p>众所周知，docker技术是一项国外技术，所以有时候使用docker的时候免不了被网速折磨的情况，所以我们需要对docker进行“优化”，使用国内的镜像源来提高下载速度</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo vim <span class="regexp">/etc/</span>docker/daemon.json <span class="comment">#vim 编写json文件</span></span><br><span class="line"><span class="comment">#把下面这些东西粘贴进json文档</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;https://kfwkfulq.mirror.aliyuncs.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;https://2lqq34jg.mirror.aliyuncs.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;https://pee6w651.mirror.aliyuncs.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;https://registry.docker-cn.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;http://hub-mirror.c.163.com&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;dns&quot;</span>: [<span class="string">&quot;8.8.8.8&quot;</span>,<span class="string">&quot;8.8.4.4&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：爱萝莉爱掘金</span><br><span class="line">链接：https:<span class="regexp">//</span>juejin.cn<span class="regexp">/post/</span><span class="number">6844904152007442446</span></span><br><span class="line">来源：掘金</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br><span class="line"><span class="comment">#重启docker服务</span></span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">或者</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210120201259550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="安装pip-并配置国内源"><a href="#安装pip-并配置国内源" class="headerlink" title="安装pip 并配置国内源"></a>安装pip 并配置国内源</h1><h2 id="安装pip并进行pip源转换"><a href="#安装pip并进行pip源转换" class="headerlink" title="安装pip并进行pip源转换"></a>安装pip并进行pip源转换</h2><p>kali软件源中提供了pip的下载所以使用命令</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">sudo apt  <span class="keyword">python3</span>-pip -<span class="keyword">y</span> #安装pip</span><br><span class="line"><span class="built_in">mkdir</span> ~/.pip #创建一个文件夹</span><br><span class="line"><span class="keyword">vim</span> ~/.pip/pip.<span class="keyword">conf</span> 修改/添加文档（常用用户下换源）</span><br><span class="line">#使用下列</span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="built_in">index</span>-url = http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br><span class="line"># root下换源</span><br><span class="line">sudo <span class="built_in">mkdir</span> .pip #创建文件夹</span><br><span class="line">sudo <span class="keyword">vim</span> .pip/pip.<span class="keyword">conf</span> #修改或/更改文档</span><br><span class="line">#使用下面</span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="built_in">index</span>-url = http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/2021012020133261.png#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="pip安装-docker-compose"><a href="#pip安装-docker-compose" class="headerlink" title="pip安装 docker-compose"></a>pip安装 docker-compose</h1><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo pip3 <span class="keyword">install</span> docker-compose <span class="comment">#安装docker-compose</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210120201344579.png#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="推荐两个靶场集合"><a href="#推荐两个靶场集合" class="headerlink" title="推荐两个靶场集合"></a>推荐两个靶场集合</h1><h3 id="c0ny1-vulstudy"><a href="#c0ny1-vulstudy" class="headerlink" title="c0ny1/vulstudy"></a><a href="https://github.com/c0ny1">c0ny1</a>/<strong><a href="https://github.com/c0ny1/vulstudy">vulstudy</a></strong></h3><p> 下载</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/c0ny1/</span>vulstudy.git <span class="comment">#克隆文件</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210120201526414.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="vulhub-vulhub"><a href="#vulhub-vulhub" class="headerlink" title="vulhub/vulhub"></a><a href="https://github.com/vulhub">vulhub</a>/<strong><a href="https://github.com/vulhub/vulhub">vulhub</a></strong></h3><p>下载</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/vulhub/</span>vulhub.git</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021012020153747.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>处理完成</p>
+<p>进入文件，查看文件目录</p>
+<p><img src="https://img-blog.csdnimg.cn/20210120201552736.png#pic_center" alt="在这里插入图片描述"></p>
+<p>通过查看README 可以知道具体用法，所以不再一一赘述</p>
+<p><img src="https://img-blog.csdnimg.cn/2021012020160299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>vuluhub使用方法</p>
+<p><img src="https://img-blog.csdnimg.cn/20210120201614149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>kali</category>
+        <category>靶场搭建</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
+        <tag>靶场搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学渣眼中的信息安全——一个学渣无聊时的自嗨（1）</title>
     <url>/2020/05/02/%E5%AD%A6%E6%B8%A3%E7%9C%BC%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E2%80%94%E2%80%94%E4%B8%80%E4%B8%AA%E5%AD%A6%E6%B8%A3%E6%97%A0%E8%81%8A%E6%97%B6%E7%9A%84%E8%87%AA%E5%97%A8%EF%BC%881%EF%BC%89/</url>
     <content><![CDATA[<h2 id="写在前面的话："><a href="#写在前面的话：" class="headerlink" title="写在前面的话："></a>写在前面的话：</h2><p>emmmm，本人是一个名副其实的学渣，现在班级排名倒数第一，不过也不影响我写博客，大家看我的博客对吧，hhhhh。由于是第一次写文肯定有许多错误，希望能有大神能给我斧正。</p>
@@ -449,45 +488,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>信息安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>kali搭建docker靶场</title>
-    <url>/2021/01/21/kali%E6%90%AD%E5%BB%BAdocker%E9%9D%B6%E5%9C%BA/</url>
-    <content><![CDATA[<h1 id="kali搭建docker靶场"><a href="#kali搭建docker靶场" class="headerlink" title="kali搭建docker靶场"></a>kali搭建docker靶场</h1><p>docker 技术又称容器技术，可以一键打包环境是我们的工作更加便捷化，我转写这篇博客的的目的是让我以后的朋友更加便捷的安装docker靶场，首先再次声明，我这篇博客是基于网上大部分朋友以及前辈的，所以勿喷</p>
-<h2 id="下载docker"><a href="#下载docker" class="headerlink" title="下载docker"></a>下载docker</h2><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo apt update  <span class="comment"># 更新kali软件源</span></span><br><span class="line">sudo apt <span class="keyword">install</span> docker.io -y  <span class="comment"># 安装 docker</span></span><br><span class="line">docker -v <span class="comment">#观察docker版本 （随着时间的推移docker版本也会升级，不要在意这一个版本）</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210120201242635.png#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="优化docker-下载速度"><a href="#优化docker-下载速度" class="headerlink" title="优化docker 下载速度"></a>优化docker 下载速度</h1><p>众所周知，docker技术是一项国外技术，所以有时候使用docker的时候免不了被网速折磨的情况，所以我们需要对docker进行“优化”，使用国内的镜像源来提高下载速度</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo vim <span class="regexp">/etc/</span>docker/daemon.json <span class="comment">#vim 编写json文件</span></span><br><span class="line"><span class="comment">#把下面这些东西粘贴进json文档</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;https://kfwkfulq.mirror.aliyuncs.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;https://2lqq34jg.mirror.aliyuncs.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;https://pee6w651.mirror.aliyuncs.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;https://registry.docker-cn.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;http://hub-mirror.c.163.com&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;dns&quot;</span>: [<span class="string">&quot;8.8.8.8&quot;</span>,<span class="string">&quot;8.8.4.4&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：爱萝莉爱掘金</span><br><span class="line">链接：https:<span class="regexp">//</span>juejin.cn<span class="regexp">/post/</span><span class="number">6844904152007442446</span></span><br><span class="line">来源：掘金</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br><span class="line"><span class="comment">#重启docker服务</span></span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">或者</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210120201259550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="安装pip-并配置国内源"><a href="#安装pip-并配置国内源" class="headerlink" title="安装pip 并配置国内源"></a>安装pip 并配置国内源</h1><h2 id="安装pip并进行pip源转换"><a href="#安装pip并进行pip源转换" class="headerlink" title="安装pip并进行pip源转换"></a>安装pip并进行pip源转换</h2><p>kali软件源中提供了pip的下载所以使用命令</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">sudo apt  <span class="keyword">python3</span>-pip -<span class="keyword">y</span> #安装pip</span><br><span class="line"><span class="built_in">mkdir</span> ~/.pip #创建一个文件夹</span><br><span class="line"><span class="keyword">vim</span> ~/.pip/pip.<span class="keyword">conf</span> 修改/添加文档（常用用户下换源）</span><br><span class="line">#使用下列</span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="built_in">index</span>-url = http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br><span class="line"># root下换源</span><br><span class="line">sudo <span class="built_in">mkdir</span> .pip #创建文件夹</span><br><span class="line">sudo <span class="keyword">vim</span> .pip/pip.<span class="keyword">conf</span> #修改或/更改文档</span><br><span class="line">#使用下面</span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="built_in">index</span>-url = http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/2021012020133261.png#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="pip安装-docker-compose"><a href="#pip安装-docker-compose" class="headerlink" title="pip安装 docker-compose"></a>pip安装 docker-compose</h1><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo pip3 <span class="keyword">install</span> docker-compose <span class="comment">#安装docker-compose</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210120201344579.png#pic_center" alt="在这里插入图片描述"></p>
-<h1 id="推荐两个靶场集合"><a href="#推荐两个靶场集合" class="headerlink" title="推荐两个靶场集合"></a>推荐两个靶场集合</h1><h3 id="c0ny1-vulstudy"><a href="#c0ny1-vulstudy" class="headerlink" title="c0ny1/vulstudy"></a><a href="https://github.com/c0ny1">c0ny1</a>/<strong><a href="https://github.com/c0ny1/vulstudy">vulstudy</a></strong></h3><p> 下载</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/c0ny1/</span>vulstudy.git <span class="comment">#克隆文件</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210120201526414.png#pic_center" alt="在这里插入图片描述"></p>
-<h3 id="vulhub-vulhub"><a href="#vulhub-vulhub" class="headerlink" title="vulhub/vulhub"></a><a href="https://github.com/vulhub">vulhub</a>/<strong><a href="https://github.com/vulhub/vulhub">vulhub</a></strong></h3><p>下载</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/vulhub/</span>vulhub.git</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/2021012020153747.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>处理完成</p>
-<p>进入文件，查看文件目录</p>
-<p><img src="https://img-blog.csdnimg.cn/20210120201552736.png#pic_center" alt="在这里插入图片描述"></p>
-<p>通过查看README 可以知道具体用法，所以不再一一赘述</p>
-<p><img src="https://img-blog.csdnimg.cn/2021012020160299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>vuluhub使用方法</p>
-<p><img src="https://img-blog.csdnimg.cn/20210120201614149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>kali</category>
-        <category>靶场搭建</category>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>kali</tag>
-        <tag>靶场搭建</tag>
       </tags>
   </entry>
 </search>
