@@ -490,4 +490,225 @@
         <tag>信息安全</tag>
       </tags>
   </entry>
+  <entry>
+    <title>CTF Show web入门 1——20（信息收集）wp和一些感想</title>
+    <url>/2021/03/27/CTF-Show-web%E5%85%A5%E9%97%A8-1%E2%80%94%E2%80%9420%EF%BC%88%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%89wp%E5%92%8C%E4%B8%80%E4%BA%9B%E6%84%9F%E6%83%B3/</url>
+    <content><![CDATA[<h2 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第一题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">开发注释未及时删除 </span><br></pre></td></tr></table></figure>
+<p>此题有以上备注，可以想到备注未删除，有备注的地方就是原来代码咯，因此联想到可以用鼠标右键查看源代码</p>
+<h2 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h2><p><strong>信息收集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第二题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">js前台拦截 <span class="comment">=== 无效操作</span></span><br></pre></td></tr></table></figure>
+<p>在题目界面可以看出由于js的使用已经无法使用查看源代码的操作了，所以我们想使用查看源代码的功能可以有两种思路</p>
+<ol>
+<li>使用在URL前面添加 view-source:（官方答案）</li>
+<li>既然因为使用JavaScript而导致不能查看源代码，那么我们是不是可以使用禁用JavaScript选项呢？</li>
+</ol>
+<h2 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第三题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">没思路的时候抓个包看看，可能会有意外收获</span><br></pre></td></tr></table></figure>
+<p>此题直接提示抓包，那我们恭敬不如从命，BurpSuite走起<img src="https://img-blog.csdnimg.cn/20210326211441268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>打码的地方就是答案所在</p>
+<h2 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第四题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">总有人把后台地址写入robots，帮黑阔大佬们引路。</span><br></pre></td></tr></table></figure>
+<p>robots.txt 是网站上经常使用的一个协议，叫做机器人协议，一般放在网站根目录，但是他是约定俗成的所以有的简陋的网站并没有这个协议，还有的为了隐藏信息并没有去编写。</p>
+<p>所以我们需要查看一下robots.txt应该就能发现flag信息</p>
+<h2 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第五题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">phps源码泄露有时候能帮上忙</span><br></pre></td></tr></table></figure>
+<p>此题为源码泄露，phps（在某篇wp上看到的解释：PHP文件编写后被php解析，然后php文件变成了网页格式，而php中编写的代码则变成了phps被保存了起来）所以我们尝试访问phps文件，发现文件可以被下载，从下载文件中发现了flag</p>
+<h2 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第六题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">解压源码到当前目录，测试正常，收工</span><br></pre></td></tr></table></figure>
+<p>从web6开始考察了代码泄露的问题，这是第一个代码泄露，根据提示我们可以看出此题泄露方式是网站备份泄露，因此我们需要了解常见网站备份的方式有rar压缩、zip压缩、7z压缩、tar.gz压缩（Linux压缩方式）、bak压缩、更改为TXT后缀、更改为old后缀、使用temp后缀，我们配合后台扫描器一般就能发现，根据扫描器我们可以发现此网站的泄露文件为<a href="http://www.zip/">www.zip</a><br><img src="https://img-blog.csdnimg.cn/20210326211600596.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>扫描器结果</p>
+<h2 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第七题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">版本控制很重要，但不要部署到生产环境更重要。</span><br></pre></td></tr></table></figure>
+<p>看到版本控制后脑子中想到了某大型“同性交友”网站——“gayhub”，由此想象到emmmm，git，这道题是git吗？尝试一下.git发现无法链接，难道是我错了？经查看可能是网站输入了链接问题，并未启用8080端口，来经过查询发现需要使用/.git/index.php</p>
+<h2 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第八题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">版本控制很重要，但不要部署到生产环境更重要。</span><br></pre></td></tr></table></figure>
+<p>what？又是版本控制？git输入。嗯？不对？</p>
+<p>经过查询发现版本控制还有svn（好吧我是铁fw），.svn/index.php 走你</p>
+<h2 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第九题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">发现网页有个错别字？赶紧在生产环境<span class="keyword">vim</span>改下，不好，死机了</span><br></pre></td></tr></table></figure>
+<p>emmmm,vim? let me 想想，由于使用vim不规范得我经常容易出现错误，会出现备份文件.后缀.swp 这个不会也是吧，冲！</p>
+<h2 id="web7、8、9-后续总结"><a href="#web7、8、9-后续总结" class="headerlink" title="web7、8、9 后续总结"></a>web7、8、9 后续总结</h2><p>版本控制问题出现的是</p>
+<ul>
+<li>git</li>
+<li>svn</li>
+<li>hg</li>
+</ul>
+<p>对于此类题目应该比较敏感</p>
+<h2 id="对于信息泄露总结"><a href="#对于信息泄露总结" class="headerlink" title="对于信息泄露总结"></a>对于信息泄露总结</h2><ul>
+<li>网站备份信息泄露<ul>
+<li>.zip</li>
+<li>.rar</li>
+<li>.7z</li>
+<li>.tar,gz</li>
+<li>bak</li>
+<li>.swp</li>
+<li>.txt</li>
+<li>···</li>
+</ul>
+</li>
+<li>版本控制信息泄露<ul>
+<li>.hg</li>
+<li>.git</li>
+<li>.svn</li>
+<li>.DS_Store泄露</li>
+</ul>
+</li>
+<li>目录遍历</li>
+<li>PHPinfo（PHP探针）</li>
+<li>vim缓存</li>
+</ul>
+<h2 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h2><p><strong>信息收集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第十题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">cookie</span> 只是一块饼干，不能存放任何隐私数据</span><br></pre></td></tr></table></figure>
+<p>cookie  用于提示web用户干了什么可以被查看，因此使用可以查看cookie的软件就可以看到，最简单的方式是抓包或者启动审查模式</p>
+<h2 id="web11"><a href="#web11" class="headerlink" title="web11"></a>web11</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第十一题 </li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">域名其实也可以隐藏信息，比如<span class="selector-tag">ctfshow</span><span class="selector-class">.com</span> 就隐藏了一条信息</span><br></pre></td></tr></table></figure>
+<p>一般域名信息需要查看dns解析等服务，因此我们需要查看dns txt记录使用阿里云的自检服务 <a href="https://zijian.aliyun.com/%EF%BC%88%E5%AE%98%E6%96%B9wp%EF%BC%89">https://zijian.aliyun.com/（官方wp）</a></p>
+<h2 id="手动分割线，从web12开始题目开始变得复杂，涉及前面11道题的综合运用"><a href="#手动分割线，从web12开始题目开始变得复杂，涉及前面11道题的综合运用" class="headerlink" title="==手动分割线，从web12开始题目开始变得复杂，涉及前面11道题的综合运用=="></a>==手动分割线，从web12开始题目开始变得复杂，涉及前面11道题的综合运用==</h2><h2 id="web12"><a href="#web12" class="headerlink" title="web12"></a>web12</h2><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第十二题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">有时候网站上的公开信息，就是管理员常用密码</span><br></pre></td></tr></table></figure>
+<p>从提示中可以看到网站上的公开信息可以得知管理员密码，此处联想密码一般为电话、邮箱、生日等信息，因此我们需要找可疑信息</p>
+<p><img src="https://img-blog.csdnimg.cn/20210326211541435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>可以确定为电话号码，但是并未寻找到登录界面，这个时候我们应该启动后台扫描器扫描后台登录后台输入即可</p>
+<h3 id="web13"><a href="#web13" class="headerlink" title="web13"></a>web13</h3><p><strong>信息搜集</strong></p>
+<ul>
+<li>此题为 【从0开始学web】系列第十三题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">技术文档里面不要出现敏感信息，部署到生产环境后及时修改默认密码</span><br></pre></td></tr></table></figure>
+<p>技术文档中出现敏感信息，此时需要查看技术文档，观看网页页首<img src="https://img-blog.csdnimg.cn/20210326211722246.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>找到技术文档，点击触发下载打开文档可以看到<img src="https://img-blog.csdnimg.cn/20210326211648356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210326211648341.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210326211844837.png#pic_center" alt="在这里插入图片描述"></p>
+<p>your-domain处是你的网页首部链接</p>
+<h2 id="web14"><a href="#web14" class="headerlink" title="web14"></a>web14</h2><ul>
+<li>此题为 【从0开始学web】系列第十四题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+<li>小0day:某编辑器最新版默认配置下，如果目录不存在，则会遍历服务器根目录</li>
+</ul>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">有时候源码里面就能不经意间泄露重要<span class="comment">(editor)</span>的信息,默认配置害死人</span><br></pre></td></tr></table></figure>
+<p>此处是editor编辑器漏洞，网页编辑器是一个非常危险的地方，因此我们需要注意，从0day提示此处需要寻找目录，我们可以观察一下上传目录，根据目录遍历我们可以寻找可疑文件最终我们寻找到fl000g.txt<br><img src="https://img-blog.csdnimg.cn/20210326211833998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="web15"><a href="#web15" class="headerlink" title="web15"></a>web15</h2><p><strong>信息搜集</strong>（社会工程学）</p>
+<ul>
+<li>此题为 【从0开始学web】系列第十五题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">公开的信息比如邮箱，可能造成信息泄露，产生严重后果</span><br></pre></td></tr></table></figure>
+<p>此题需要观察邮箱从网页的页尾可以看到邮箱信息<img src="https://img-blog.csdnimg.cn/20210326211821130.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>可以看到是QQ邮箱，运用社工知识可以查询一系列信息，此处不加详解，可以看到，登录后台发现邮箱不是密码，尝试使用QQ号发现不对</p>
+<p><img src="https://img-blog.csdnimg.cn/20210326211903533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>重置密码</p>
+<p>登录得到flag</p>
+<h2 id="web16"><a href="#web16" class="headerlink" title="web16"></a>web16</h2><ul>
+<li>此题为 【从0开始学web】系列第十六题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对于测试用的探针，使用完毕后要及时删除，可能会造成信息泄露</span><br></pre></td></tr></table></figure>
+<p><strong>探针：</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20210326211912187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>查询常用探针，查询PHPinfo（）可以找到flag</p>
+<h2 id="web17"><a href="#web17" class="headerlink" title="web17"></a>web17</h2><ul>
+<li>此题为 【从0开始学web】系列第十七题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">透过重重缓存，查找到ctfer.com的真实<span class="built_in">IP</span>，提交flag&#123;<span class="built_in">IP</span>地址&#125; </span><br></pre></td></tr></table></figure>
+<p>寻找可以查询ip的网站（ipip）</p>
+<p>查找到flag</p>
+<h2 id="web18"><a href="#web18" class="headerlink" title="web18"></a>web18</h2><ul>
+<li>此题为 【从0开始学web】系列第十八题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight sqf"><table><tr><td class="code"><pre><span class="line">不要着急，休息，休息一会儿，玩<span class="number">101</span>分给你<span class="built_in">flag</span></span><br></pre></td></tr></table></figure>
+<p>看到这个题我直接疑惑玩游戏？？？（游戏废玩家）路过</p>
+<p>查看源码发现是js游戏，找到js源码发现101分的意思是满足这个条件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(score&gt;<span class="number">100</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">var</span> result=<span class="built_in">window</span>.confirm(<span class="string">&quot;\u4f60\u8d62\u4e86\uff0c\u53bb\u5e7a\u5e7a\u96f6\u70b9\u76ae\u7231\u5403\u76ae\u770b\u770b&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处为Unicode代码使用在线转换工具可以得出flag</p>
+<h2 id="web19"><a href="#web19" class="headerlink" title="web19"></a>web19</h2><ul>
+<li>此题为 【从0开始学web】系列第十九题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">密钥什么的，就不要放在前端了</span><br></pre></td></tr></table></figure>
+<p>看到这句话狂喜，查看源码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkForm</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key = <span class="string">&quot;0000000372619038&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> iv = <span class="string">&quot;ilove36dverymuch&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> pazzword = $(<span class="string">&quot;#pazzword&quot;</span>).val();</span><br><span class="line">    pazzword = encrypt(pazzword,key,iv);</span><br><span class="line">    $(<span class="string">&quot;#pazzword&quot;</span>).val(pazzword);</span><br><span class="line">    $(<span class="string">&quot;#loginForm&quot;</span>).submit();</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">encrypt</span>(<span class="params">data,key,iv</span>) </span>&#123; <span class="comment">//key,iv：16位的字符串</span></span><br><span class="line">    <span class="keyword">var</span> key1  = CryptoJS.enc.Latin1.parse(key);</span><br><span class="line">    <span class="keyword">var</span> iv1   = CryptoJS.enc.Latin1.parse(iv);</span><br><span class="line">    <span class="keyword">return</span> CryptoJS.AES.encrypt(data, key1,&#123;</span><br><span class="line">        iv : iv1,</span><br><span class="line">        mode : CryptoJS.mode.CBC,</span><br><span class="line">        padding : CryptoJS.pad.ZeroPadding</span><br><span class="line">    &#125;).toString();</span><br><span class="line">&#125;</span><br><span class="line">  &lt;!--error_reporting(<span class="number">0</span>);</span><br><span class="line">    $flag=<span class="string">&quot;fakeflag&quot;</span></span><br><span class="line">    $u = $_POST[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">    $p = $_POST[<span class="string">&#x27;pazzword&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(isset($u) &amp;&amp; isset($p))&#123;</span><br><span class="line">        <span class="keyword">if</span>($u===<span class="string">&#x27;admin&#x27;</span> &amp;&amp; $p ===<span class="string">&#x27;a599ac85a73384ee3219fa684296eaa62667238d608efa81837030bd1ce1bf04&#x27;</span>)&#123;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">-&gt;</span><br></pre></td></tr></table></figure>
+<p>发现秘钥由前段使用AES的CBC模式，进入解密状态解出原秘密口令</p>
+<p>或者直接post提交秘钥信息</p>
+<h2 id="web20（最后一题）"><a href="#web20（最后一题）" class="headerlink" title="web20（最后一题）"></a>web20（最后一题）</h2><ul>
+<li>此题为 【从0开始学web】系列第二十题</li>
+<li>此系列题目从最基础开始，题目遵循循序渐进的原则</li>
+<li>希望对学习CTF WEB的同学有所帮助。</li>
+<li>做为信息泄露的最后一题，还有其他没有涉及到的地方，欢迎联系群主补充</li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">mdb文件是早期asp+<span class="keyword">access</span>构架的数据库文件，文件泄露相当于数据库被脱裤了。</span><br></pre></td></tr></table></figure>
+<p>经过后台扫描发可以路径下的文件/db/db.mdb 访问下载，用记事本打开发现flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20210326212640671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk1OTg4NQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <tags>
+        <tag>WEB</tag>
+        <tag>CTF</tag>
+      </tags>
+  </entry>
 </search>
